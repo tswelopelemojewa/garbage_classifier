@@ -56,11 +56,20 @@ def upload():
 
     return 'Invalid file or file extension.'
 
+import gdown
 
+# Replace 'your_shareable_link' with the actual shareable link of your file
+gdrive_file_url = "https://drive.google.com/file/d/1IodlUzT1DmY-Dv4c6bV4kD2T73sEE-ci/view"
+
+# Define the output file name (e.g., 'my_file.pkl')
+output_file = "garbagle_pickle.pkl"
+
+# Download the file
+gdown.download(gdrive_file_url, output_file, quiet=False)
 
 
 # Load the pickled model
-with open('https://drive.google.com/file/d/1IodlUzT1DmY-Dv4c6bV4kD2T73sEE-ci/view', 'rb') as model_file:
+with open('garbagle_pickle.pkl', 'rb') as model_file:
     model = pickle.load(model_file)
 
 
