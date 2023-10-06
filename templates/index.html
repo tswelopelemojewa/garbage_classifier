@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME PAGE</title>
+    <script src="/static/js/alpine.js" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+        integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body x-data="capstoneApp">
+
+    <div class="container">
+        <br>
+        <br>
+
+
+        <!-- <span><h1 class="text-center">RECYCLING TECH PRO</h1></span><br> -->
+
+
+        <div class="row">
+            <div class="col-md-5">
+                <img src="static/images/photo.jpeg" class="rounded mx-auto" width="250px" />
+            </div>
+            <div class="col-md-7 float-end">
+                <button class="btn btn-outline-warning">CLASSIFY</button>
+
+                <button class="btn btn-outline-warning">CLASSIFICATION HISTORY</button>
+
+                <a href="/about" class=" btn btn-outline-warning link-secondary ">ABOUT</a>
+                <a href="/contact" class="btn btn-outline-warning link-secondary">CONTACT US</a>
+                <a href="/logout" class=" btn btn-outline-danger link-secondary">LOGOUT</a>
+
+            </div>
+
+        </div>
+        <br>
+        <br>
+
+        <div class="col-md-12 ">
+            <br>
+        
+
+            <template x-if="{{ predicted_class }} == 1">
+                <h4>Predicted Class: Cardboard</h4>
+            </template>
+            <template x-if="{{ predicted_class }} == 2">
+                <h4>Predicted Class: Glass</h4>
+            </template>
+            <template x-if="{{ predicted_class }} == 3">
+                <h4>Predicted Class: Metal</h4>
+            </template>
+            
+            <template x-if="{{ predicted_class }} == 4">
+                <h4>Predicted Class: Paper</h4>
+            </template>
+            
+            <template x-if="{{ predicted_class }} == 5">
+                <h4>Predicted Class: Plastic</h4>
+            </template>
+            
+            <template x-if="{{ predicted_class }} == 6">
+                <h4>Predicted Class: Trash</h4>
+            </template>
+
+            <hr>
+
+            <form action="/predict" method="post" enctype="multipart/form-data">
+                <br>
+
+                <label>Upload an image of waste material</label><br>
+
+                <input type="file" name="file"><br><br>
+                <input @click="upload()" class="btn btn-outline-info" type="submit" value="CLASSIFY">
+
+            </form>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <!-- <form action="/upload" method="post" enctype="multipart/form-data">
+                        <h4>UPLOAD IMAGE OF WASTE MATERIAL</h4><br>
+
+                        <label>Upload an image of waste material</label><br>
+
+                        <input x-model="img" type="file" name="file"><br><br>
+                        <input @click="upload()" class="btn btn-outline-info" type="submit" value="UPLOAD"><br>
+
+                    </form> -->
+                </div>
+
+                <div class="col-md-6">
+
+                </div>
+
+            </div>
+
+
+
+            <br>
+
+
+            <div class="col-md-12">
+                <h4>CLASSIFICATION HISTORY</h4>
+                <hr>
+                <table class="table text-center">
+                    <thead>
+                        <th>Image</th>
+                        <th>Predicted</th>
+                    </thead>
+                    <tbody>
+                        {% for image in images %}
+                        <tr>
+                            <td><img src="{{ url_for('static', filename='uploads/' + image[0]) }}" alt="{{ image[0] }}"
+                                    width="150px"></td>
+
+                            <td>
+                                
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+</body>
+
+</html>

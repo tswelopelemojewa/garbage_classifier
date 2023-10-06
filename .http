@@ -1,0 +1,9 @@
+
+post http://127.0.0.1:5000/predict
+Content-Type: application/json
+
+{
+    
+    "img": "/home/tswelopele/WRP/capstone project/not mine/khanyi/garbage_classification/app/static/uploads/msu_comparison.png"
+
+}
