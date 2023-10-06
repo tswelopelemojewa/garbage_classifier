@@ -60,7 +60,7 @@ def upload():
 
 
 # Load the pickled model
-with open('https://drive.google.com/file/d/1IodlUzT1DmY-Dv4c6bV4kD2T73sEE-ci/view?usp=sharing', 'rb') as model_file:
+with open('https://drive.google.com/file/d/1IodlUzT1DmY-Dv4c6bV4kD2T73sEE-ci/view?usp=drive_link', 'rb') as model_file:
     model = pickle.load(model_file)
 
 
