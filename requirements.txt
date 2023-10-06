@@ -19,7 +19,7 @@ typing_extensions==4.7.1
 urllib3==2.0.6
 Werkzeug==2.2.3
 opencv-python==4.8.1.78
-tensorflow==2.14.0
+tensorflow==2.11.0
 gunicorn
 
 
